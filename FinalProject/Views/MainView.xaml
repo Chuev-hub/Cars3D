@@ -1,0 +1,227 @@
+﻿<Window x:Class="FinalProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FinalProject"
+        xmlns:vm="clr-namespace:FinalProject.ViewModels"
+        xmlns:HelixToolkit="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        xmlns:res="clr-namespace:FinalProject.Properties"
+        Height="509" Width="726" MinWidth="726" MinHeight="509">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="button"/>
+    </Window.Triggers>
+
+    <Window.DataContext>
+        <vm:MainViewModel></vm:MainViewModel>
+    </Window.DataContext>
+    <Grid>
+
+        <Grid x:Name="MainGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="gridR" Style="{DynamicResource Mid}" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition  Height="3*"/>
+                    <RowDefinition   Height="4*"/>
+                </Grid.RowDefinitions>
+                <!--manufacturer;
+         assembly;
+         info;
+         model;
+         bodyStyle;
+         carClass;-->
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <ListBox x:Name="listBoxCars" Grid.Column="0"  ItemsSource="{Binding Cars}" SelectionMode ="Single" SelectedItem="{Binding SelectedCar}" Height="145" Margin="10,10,0,0" VerticalAlignment="Top" />
+                        <StackPanel Grid.Column="1"  Orientation="Horizontal" Margin="10,0,0,0" >
+                            <Button BorderThickness="0" Command="{Binding AZCommand}"  Height="30" Width="30" Background="#00DDDDDD" >
+                                <Button.Effect>
+                                    <DropShadowEffect ShadowDepth="7"></DropShadowEffect>
+                                </Button.Effect>
+                                <Button.Content >
+                                    <TextBlock FontSize="15" Text="{Binding L.Az}" FontWeight="Bold"></TextBlock>
+                                </Button.Content>
+                            </Button>
+                            <Button BorderThickness="0" Command="{Binding ZACommand}"  Height="30" Width="30" Background="#00DDDDDD" >
+                                <Button.Content >
+                                    <TextBlock FontSize="15"  Text="{Binding L.Za}" FontWeight="Bold"></TextBlock>
+                                </Button.Content>
+                                <Button.Effect>
+                                    <DropShadowEffect ShadowDepth="7"></DropShadowEffect>
+                                </Button.Effect>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="0,10,0,0" >
+                        <Button BorderThickness="0" Command="{Binding AddCommand}" Height="50" Width="50" >
+                            <Button.Background>
+                                <ImageBrush ImageSource="/FinalProject;component/Resources/+.png"/>
+                            </Button.Background>
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="7"></DropShadowEffect>
+                            </Button.Effect>
+                        </Button>
+                        <Button BorderThickness="0" Command="{Binding RemoveCommand}" Height="50" Width="50" >
+                            <Button.Background>
+                                <ImageBrush ImageSource="/FinalProject;component/Resources/-.png"/>
+                            </Button.Background>
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="7"></DropShadowEffect>
+                            </Button.Effect>
+                        </Button>
+                        <Button BorderThickness="0" Command="{Binding EditCommand}" Height="50" Width="50" >
+                            <Button.Background>
+                                <ImageBrush ImageSource="/FinalProject;component/Resources/Edit.png"/>
+                            </Button.Background>
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="7"></DropShadowEffect>
+                            </Button.Effect>
+                        </Button>
+                    </StackPanel>
+
+                </Grid>
+
+                <StackPanel  Height="253" VerticalAlignment="Top" Grid.Row="1" Margin="10,0"  >
+                    <TextBlock Text ="{Binding L.Manufacturer}"/>
+                    <TextBox  Height="22" TextWrapping="Wrap" Text="{Binding SelectedCar.Manufacturer}" IsReadOnly="True"/>
+                    <TextBlock Text="{Binding L.Model}" />
+                    <TextBox  Height="22" TextWrapping="Wrap" Text="{Binding SelectedCar.Model}" IsReadOnly="True"/>
+                    <TextBlock Text="{Binding L.Assembly}" ></TextBlock>
+                    <TextBox  Height="22" TextWrapping="Wrap" Text="{Binding SelectedCar.Assembly}" IsReadOnly="True"/>
+                    <TextBlock Text="{Binding L.BodyStyle}" ></TextBlock>
+                    <TextBox  Height="22" TextWrapping="Wrap" Text="{Binding SelectedCar.BodyStyle}" IsReadOnly="True"/>
+                    <TextBlock Text="{Binding L.CarClass}" ></TextBlock>
+                    <TextBox  Height="22" TextWrapping="Wrap" Text="{Binding SelectedCar.CarClass}" IsReadOnly="True"/>
+                    <TextBlock Text="{Binding L.About}" ></TextBlock>
+                </StackPanel>
+
+                <TextBox Grid.Row="1"  TextWrapping="Wrap" Text="{Binding SelectedCar.Info}" IsReadOnly="True" IsUndoEnabled="True" MinLines="1" Margin="10,207,10,10" />
+            </Grid>
+
+            <Grid x:Name="SecondGrid"  Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="70px"/>
+                </Grid.RowDefinitions>
+
+                <HelixToolkit:HelixViewport3D  RotateGesture="LeftClick" Grid.Row="0" ZoomExtentsWhenLoaded="True"  Name="h" >
+
+
+
+                    <HelixToolkit:SunLight/>
+                    <ModelVisual3D x:Name="model" />
+                </HelixToolkit:HelixViewport3D>
+
+                <Grid  Grid.Row="1" Style="{DynamicResource Dark}">
+
+                    <StackPanel  Orientation ="Horizontal">
+                        <Button x:Name="button" BorderThickness="0" Height="60" Width="60" Command="{Binding ExitCommand}" Margin="5">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/FinalProject;component/Resources/Off.png"/>
+                            </Button.Background>
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="7"></DropShadowEffect>
+                            </Button.Effect>
+                        </Button>
+
+
+                        <Button BorderThickness="0" Command="{Binding ImportCommand}"  Height="60" Width="60" Margin="5">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/FinalProject;component/Resources/Im.png"/>
+                            </Button.Background>
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="7"></DropShadowEffect>
+                            </Button.Effect>
+                        </Button>
+
+                        <Button BorderThickness="0" Command="{Binding ExportCommand}"  Height="60" Width="60" Margin="5">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/FinalProject;component/Resources/Ex.png"/>
+                            </Button.Background>
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="7"></DropShadowEffect>
+                            </Button.Effect>
+                        </Button>
+
+                        <Button BorderThickness="0" Command="{Binding ChangeThemeCommand}"  Height="60" Width="60" Margin="5" >
+                            <Button.Background>
+                                <ImageBrush ImageSource="/FinalProject;component/Resources/BW.png"/>
+                            </Button.Background>
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="7"></DropShadowEffect>
+                            </Button.Effect>
+                        </Button>
+
+                        <Button BorderThickness="0" Command="{Binding ChangeLgCommand}" Height="60" Width="60" Margin="5"   >
+                            <Button.Background>
+                                <ImageBrush  ImageSource="/FinalProject;component/Resources/Lg.png"/>
+                            </Button.Background>
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="7"></DropShadowEffect>
+                            </Button.Effect>
+                        </Button>
+                    </StackPanel>
+
+                </Grid>
+
+            </Grid>
+        </Grid>
+        <Grid x:Name="AddGrid" Background="#7f000000" Visibility="Hidden" >
+            <Grid Style="{DynamicResource Mid}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="232,29,208,35" Width="278" Height="414" RenderTransformOrigin="0.491,0.527">
+
+                <StackPanel   VerticalAlignment="Top" Grid.Row="1" Margin="20,10,20,0"  >
+                    <TextBlock  Text="{Binding L.Manufacturer}"/>
+                    <TextBox x:Name="ManufacturerTextBox" Height="22" TextWrapping="Wrap"/>
+                    <TextBlock  Text="{Binding L.Model}" />
+                    <TextBox x:Name="ModelTextBox" Height="22" TextWrapping="Wrap"/>
+                    <TextBlock  Text="{Binding L.Assembly}"></TextBlock>
+                    <TextBox x:Name="AssemblyTextBox" Height="22" TextWrapping="Wrap"/>
+                    <TextBlock Text="{Binding L.BodyStyle}"></TextBlock>
+                    <TextBox x:Name="BodyStyleTextBox" Height="22" TextWrapping="Wrap"/>
+                    <TextBlock  Text="{Binding L.CarClass}" ></TextBlock>
+                    <TextBox x:Name="ClassTextBox" Height="22" TextWrapping="Wrap"/>
+                    <TextBox x:Name="PathTextBox" Height="22" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                    <Button BorderThickness="0"  Content="{Binding L.PathTo3DModel}" Height="22" Margin="0,5,0,10" Style="{DynamicResource UsualB}" Command="{Binding PathAddCommand}"></Button>
+                    <TextBlock  Text="{Binding L.About}" ></TextBlock>
+                    <TextBox x:Name="AboutTextBox" Height="60" TextWrapping="Wrap"/>
+                    <Button BorderThickness="0"  Content="{Binding L.Ok}" Height="22" Style="{DynamicResource UsualB}" Margin="0,10,0,0" Command="{Binding OkAddCommand}"  ></Button>
+                    <Button BorderThickness="0"  Content="{Binding L.Cancel}" Height="22" Style="{DynamicResource UsualB}" Margin="0,5,0,0" Command="{Binding CancelCommand}"   />
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid x:Name="EditGrid" Background="#7f000000" Visibility="Hidden" >
+            <Grid Style="{DynamicResource Mid}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="225,35,215,30" Width="278" Height="413" RenderTransformOrigin="0.491,0.527">
+
+                <StackPanel   VerticalAlignment="Top" Grid.Row="1" Margin="20,10,20,0"  >
+                    <TextBlock  Text="{Binding L.Manufacturer}"/>
+                    <TextBox x:Name="EditManufacturerTextBox" Height="22" TextWrapping="Wrap"/>
+                    <TextBlock  Text="{Binding L.Model}" />
+                    <TextBox x:Name="EditModelTextBox" Height="22" TextWrapping="Wrap"/>
+                    <TextBlock  Text="{Binding L.Assembly}"></TextBlock>
+                    <TextBox x:Name="EditAssemblyTextBox" Height="22" TextWrapping="Wrap"/>
+                    <TextBlock Text="{Binding L.BodyStyle}"></TextBlock>
+                    <TextBox x:Name="EditBodyStyleTextBox" Height="22" TextWrapping="Wrap"/>
+                    <TextBlock  Text="{Binding L.CarClass}" ></TextBlock>
+                    <TextBox x:Name="EditClassTextBox" Height="22" TextWrapping="Wrap"/>
+                    <TextBox x:Name="EditPathTextBox" Height="22" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                    <Button BorderThickness="0"  Content="{Binding L.PathTo3DModel}" Height="22" Margin="0,5,0,10" Style="{DynamicResource UsualB}" Command="{Binding PathEditCommand}"></Button>
+                    <TextBlock  Text="{Binding L.About}" ></TextBlock>
+                    <TextBox x:Name="EditAboutTextBox" Height="60" TextWrapping="Wrap"/>
+                    <Button BorderThickness="0"  Content="{Binding L.Ok}" Height="22" Style="{DynamicResource UsualB}" Margin="0,10,0,0" Command="{Binding OkEditCommand}"></Button>
+                    <Button  Content="{Binding L.Cancel}" Height="22" Style="{DynamicResource UsualB}" Margin="0,5,0,0" Command="{Binding CancelCommand}" BorderThickness="0"    />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</Window>

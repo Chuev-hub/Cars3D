@@ -1,0 +1,57 @@
+[
+  {
+    "modelV3D": null,
+    "Manufacturer": "BMW",
+    "Assembly": "German",
+    "CarClass": "Sport Car",
+    "BodyStyle": "5 doors",
+    "Model": "3GS",
+    "Info": "This car is very fast",
+    "ModelV3D": null,
+    "PathTo3D": "ObjectsPro\\BMW.obj"
+  },
+  {
+    "modelV3D": null,
+    "Manufacturer": "Chevrolet",
+    "Assembly": "Italy",
+    "CarClass": "Light Car",
+    "BodyStyle": "5 doors",
+    "Model": "MA1",
+    "Info": "This car isn`t very fast",
+    "ModelV3D": null,
+    "PathTo3D": "ObjectsPro\\shevrolet.obj"
+  },
+  {
+    "modelV3D": null,
+    "Manufacturer": "Alfa Romeo",
+    "Assembly": "Italy",
+    "CarClass": "Light Car",
+    "BodyStyle": "3 doors",
+    "Model": "4c",
+    "Info": "This car is fast",
+    "ModelV3D": null,
+    "PathTo3D": "ObjectsPro\\Car1.obj"
+  },
+  {
+    "modelV3D": null,
+    "Manufacturer": "McLaren",
+    "Assembly": "England",
+    "CarClass": "Sport Car",
+    "BodyStyle": "3 doors",
+    "Model": "720S",
+    "Info": "This car is very super fast",
+    "ModelV3D": null,
+    "PathTo3D": "ObjectsPro\\mclarenblend.mtl.obj"
+  },
+  {
+    "modelV3D": null,
+    "Manufacturer": "Ford",
+    "Assembly": "USA",
+    "CarClass": "Pick Up",
+    "BodyStyle": "5 doors",
+    "Model": "F 150",
+    "Info": "This car isn`t very fast",
+    "ModelV3D": null,
+    "PathTo3D": "ObjectsPro\\PickUp.obj"
+  }
+]
