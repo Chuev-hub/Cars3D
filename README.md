@@ -7,6 +7,9 @@ The cars also have different characteristics (as model, manufacturer, assembly, 
 
 There is a dark and light theme, also two languages are in the application. There is also an alphabetical sorting of the cars collection. 
 
+# My Gif
+<img src="https://github.com/Chuev-hub/Cars3D/blob/master/work.gif" width="384" />
+
 ## Stack 📋
 - C# WPF Application
 - MVVM
