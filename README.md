@@ -5,9 +5,10 @@ A very interesting WPF application that allows you to perform Create-Read-Update
 
 The cars also have different characteristics (as model, manufacturer, assembly, class etc.). 
 
-There is a dark and light theme, also two languages are in the application. There is also an alphabetical sorting of the cars collection. 
+There is a dark and light theme, also two languages are in the application. There is also an alphabetical sorting (AZ/ZA) of the cars collection. 
 
 # My Gif
+
 <img src="https://github.com/Chuev-hub/Cars3D/blob/master/work.gif" width="384" />
 
 ## Stack 📋
